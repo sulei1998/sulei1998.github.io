@@ -80,19 +80,19 @@
 <meta property="og:site_name" content="Lei&#39;s HomePage">
 <meta property="og:description" content="🎃基于跳表的轻量级键值型存储引擎 - 自主开发 （2022年06月-2022年06月）项目描述该项目使用C++语言实现了轻量级键值对存储引擎，其底层数据结构为跳表，支持数据随机增删查改，以及数据的落盘加载功能。 项目细节 使用模板编程实现跳表存储结构，实现插入数据、删除数据、查询数据、数据展示、数据落盘、文件加载数据和数据库大小展示功能 使用锁机制保证读写分离，每秒支持十万次以上随机读写  实施">
 <meta property="og:locale">
-<meta property="og:image" content="http://rew02gdxd.hn-bkt.clouddn.com/images/scence.png">
-<meta property="og:image" content="http://rew02gdxd.hn-bkt.clouddn.com/images/image-20220614162200528.png">
+<meta property="og:image" content="http://example.com/images/scence.png">
+<meta property="og:image" content="http://example.com/images/image-20220614162200528.png">
 <meta property="og:image" content="http://example.com/images/mocap.png">
-<meta property="og:image" content="http://rew02gdxd.hn-bkt.clouddn.com/images/calibration.jpg">
+<meta property="og:image" content="http://example.com/images/calibration.jpg">
 <meta property="og:image" content="http://example.com/images/stage1.png">
 <meta property="og:image" content="http://example.com/images/stage2.png">
 <meta property="og:image" content="http://example.com/images/seat.png">
 <meta property="article:published_time" content="2022-07-11T08:10:22.000Z">
-<meta property="article:modified_time" content="2022-07-13T05:16:40.715Z">
+<meta property="article:modified_time" content="2022-07-14T08:23:54.146Z">
 <meta property="article:author" content="Lei Su">
 <meta property="article:tag" content="projects">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://rew02gdxd.hn-bkt.clouddn.com/images/scence.png">
+<meta name="twitter:image" content="http://example.com/images/scence.png">
 
 
 
@@ -344,7 +344,7 @@
 <li>针对现有下肢康复训练数据集稀缺的问题，搭建实验场景，构建<strong>运动捕捉系统及多相机系统</strong>，完成<strong>多系统同步控制及多系统标定</strong>的功能，并在此基础上完成<strong>数据集采集</strong>。</li>
 <li>针对人机交互、遮挡等因素影响位姿估计的问题，设计方法，基于计算机视觉，使用<strong>多视角几何</strong>，以立体图像为输入，通过<strong>添加人体内在的生理约束以及人与环境交互过程中的物理约束</strong>，有效提高了位姿估计的精度。</li>
 </ul>
-<h2 id="实施细节-1"><a href="#实施细节-1" class="headerlink" title="实施细节"></a>实施细节</h2><h3 id="技术路线"><a href="#技术路线" class="headerlink" title="技术路线"></a>技术路线</h3><h3 id="实验场景搭建"><a href="#实验场景搭建" class="headerlink" title="实验场景搭建"></a>实验场景搭建</h3><ul>
+<h2 id="实施细节-1"><a href="#实施细节-1" class="headerlink" title="实施细节"></a>实施细节</h2><h3 id="实验场景搭建"><a href="#实验场景搭建" class="headerlink" title="实验场景搭建"></a>实验场景搭建</h3><ul>
 <li>运动捕捉系统</li>
 </ul>
 <p>采用<a target="_blank" rel="noopener" href="http://www.optitrack.com.cn/">OptiTrack</a>提供的硬件及配套的软件</p>
@@ -352,10 +352,11 @@
 <li>多相机系统</li>
 </ul>
 <p>一台双目相机（后续使用了一台Kinect+两台Realsense作为多相机系统）</p>
-<img src="http://rew02gdxd.hn-bkt.clouddn.com/images/scence.png" alt="scence" style="zoom: 67%;" />
+<img src="/images/scence.png" alt="mocap" style="zoom:67%;" />
 
 <h3 id="多系统同步控制"><a href="#多系统同步控制" class="headerlink" title="多系统同步控制"></a>多系统同步控制</h3><p>基于<strong>Tkinter</strong>设计GUI用于同步控制多系统，实现逻辑基于<strong>Redis</strong>非关系型数据库。通过按钮去控制同时启动与结束不同系统的数据采集，并以时间戳的格式去存储不同系统所捕获的信息，便于后续数据的处理。</p>
-<img src="http://rew02gdxd.hn-bkt.clouddn.com/images/image-20220614162200528.png" alt="GUI" style="zoom:50%;" />
+<img src="/images/image-20220614162200528.png" alt="mocap" style="zoom: 50%;" />
+
 
 <h3 id="多系统标定"><a href="#多系统标定" class="headerlink" title="多系统标定"></a>多系统标定</h3><ul>
 <li>运动捕捉系统标定</li>
@@ -367,7 +368,9 @@
 </ul>
 <p>使用特殊的<strong>自制棋盘标定板</strong>，因为根据<strong>“张正友标定法”</strong>利用普通的棋盘标定板只能标定多相机系统中多个相机的内参及外参，并不能标定出多相机系统坐标系与运动捕捉系统坐标系之间的关系。</p>
 <p>在棋盘四个角点处贴上特制的反光标定点，使标定板能够同时被运动捕捉系统和多相机系统识别，进而编写程序通过两个系统中棋盘位置的信息来计算两个系统坐标系的转换关系。<a href="">推导多系统坐标系转换关系（待补充）</a></p>
-<img src="http://rew02gdxd.hn-bkt.clouddn.com/images/calibration.jpg" style="zoom:80%;" />
+<img src="/images/calibration.jpg" alt="mocap" style="zoom:67%;" />
+
+
 
 <h3 id="数据采集"><a href="#数据采集" class="headerlink" title="数据采集"></a>数据采集</h3><p>分为定量数据采集和定性数据采集两个部分。定量数据采集要求被试者穿上特定服装贴上反光标记点，使用运动捕捉系统捕获运动的真值。定性数据则没有要求，正常采集即可。</p>
 <h3 id="方法设计"><a href="#方法设计" class="headerlink" title="方法设计"></a>方法设计</h3><p><em>（论文尚在发表阶段，仅大致描述，后续接收后详细补充）</em></p>
@@ -604,7 +607,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%F0%9F%8E%83%E5%9F%BA%E4%BA%8E%E8%B7%B3%E8%A1%A8%E7%9A%84%E8%BD%BB%E9%87%8F%E7%BA%A7%E9%94%AE%E5%80%BC%E5%9E%8B%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E-%E8%87%AA%E4%B8%BB%E5%BC%80%E5%8F%91-%EF%BC%882022%E5%B9%B406%E6%9C%88-2022%E5%B9%B406%E6%9C%88%EF%BC%89"><span class="nav-number">1.</span> <span class="nav-text">🎃基于跳表的轻量级键值型存储引擎 - 自主开发 （2022年06月-2022年06月）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A1%B9%E7%9B%AE%E6%8F%8F%E8%BF%B0"><span class="nav-number">1.1.</span> <span class="nav-text">项目描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A1%B9%E7%9B%AE%E7%BB%86%E8%8A%82"><span class="nav-number">1.2.</span> <span class="nav-text">项目细节</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9E%E6%96%BD%E7%BB%86%E8%8A%82"><span class="nav-number">1.3.</span> <span class="nav-text">实施细节</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%F0%9F%8E%83%E6%AD%A6%E6%B1%89%E5%B8%82%E7%A7%91%E6%8A%80%E5%B1%80%E5%BA%94%E7%94%A8%E5%9F%BA%E7%A1%80%E5%89%8D%E6%B2%BF%E9%A1%B9%E7%9B%AE-%E5%9F%BA%E4%BA%8E%E5%A4%9A%E6%BA%90%E4%BF%A1%E6%81%AF%E8%9E%8D%E5%90%88%E7%9A%84%E5%9D%90%E5%8D%A7%E5%BC%8F%E6%99%BA%E8%83%BD%E5%BA%B7%E5%A4%8D%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%85%B3%E9%94%AE%E6%8A%80%E6%9C%AF%E7%A0%94%E7%A9%B6-%EF%BC%882020%E5%B9%B408%E6%9C%88-2022%E5%B9%B403%E6%9C%88%EF%BC%89"><span class="nav-number">2.</span> <span class="nav-text">🎃武汉市科技局应用基础前沿项目 - 基于多源信息融合的坐卧式智能康复机器人关键技术研究 （2020年08月-2022年03月）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A1%B9%E7%9B%AE%E6%8F%8F%E8%BF%B0-1"><span class="nav-number">2.1.</span> <span class="nav-text">项目描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A1%B9%E7%9B%AE%E7%BB%86%E8%8A%82-1"><span class="nav-number">2.2.</span> <span class="nav-text">项目细节</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9E%E6%96%BD%E7%BB%86%E8%8A%82-1"><span class="nav-number">2.3.</span> <span class="nav-text">实施细节</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8A%80%E6%9C%AF%E8%B7%AF%E7%BA%BF"><span class="nav-number">2.3.1.</span> <span class="nav-text">技术路线</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9E%E9%AA%8C%E5%9C%BA%E6%99%AF%E6%90%AD%E5%BB%BA"><span class="nav-number">2.3.2.</span> <span class="nav-text">实验场景搭建</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%9A%E7%B3%BB%E7%BB%9F%E5%90%8C%E6%AD%A5%E6%8E%A7%E5%88%B6"><span class="nav-number">2.3.3.</span> <span class="nav-text">多系统同步控制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%9A%E7%B3%BB%E7%BB%9F%E6%A0%87%E5%AE%9A"><span class="nav-number">2.3.4.</span> <span class="nav-text">多系统标定</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E9%87%87%E9%9B%86"><span class="nav-number">2.3.5.</span> <span class="nav-text">数据采集</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E8%AE%BE%E8%AE%A1"><span class="nav-number">2.3.6.</span> <span class="nav-text">方法设计</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8E%E5%A4%9A%E8%A7%86%E8%A7%92%E5%87%A0%E4%BD%95%E7%9A%84%E4%B8%89%E7%BB%B4%E4%BD%8D%E5%A7%BF%E6%B1%82%E8%A7%A3"><span class="nav-number">2.3.6.1.</span> <span class="nav-text">基于多视角几何的三维位姿求解</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8E%E7%89%A9%E7%90%86%E3%80%81%E7%94%9F%E7%90%86%E7%AD%89%E7%BA%A6%E6%9D%9F%E4%BF%A1%E6%81%AF%E7%9A%84%E4%B8%89%E7%BB%B4%E4%BD%8D%E5%A7%BF%E7%B2%BE%E5%8C%96"><span class="nav-number">2.3.6.2.</span> <span class="nav-text">基于物理、生理等约束信息的三维位姿精化</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%F0%9F%8C%9F%E9%A1%B9%E7%9B%AEGithub%E5%9C%B0%E5%9D%80%F0%9F%8C%9F%EF%BC%88%E8%AE%BA%E6%96%87%E6%8E%A5%E6%94%B6%E5%90%8E%E5%BC%80%E6%BA%90%EF%BC%89"><span class="nav-number">2.4.</span> <span class="nav-text">🌟项目Github地址🌟（论文接收后开源）</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%F0%9F%8E%83%E5%9F%BA%E4%BA%8E%E8%B7%B3%E8%A1%A8%E7%9A%84%E8%BD%BB%E9%87%8F%E7%BA%A7%E9%94%AE%E5%80%BC%E5%9E%8B%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E-%E8%87%AA%E4%B8%BB%E5%BC%80%E5%8F%91-%EF%BC%882022%E5%B9%B406%E6%9C%88-2022%E5%B9%B406%E6%9C%88%EF%BC%89"><span class="nav-number">1.</span> <span class="nav-text">🎃基于跳表的轻量级键值型存储引擎 - 自主开发 （2022年06月-2022年06月）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A1%B9%E7%9B%AE%E6%8F%8F%E8%BF%B0"><span class="nav-number">1.1.</span> <span class="nav-text">项目描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A1%B9%E7%9B%AE%E7%BB%86%E8%8A%82"><span class="nav-number">1.2.</span> <span class="nav-text">项目细节</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9E%E6%96%BD%E7%BB%86%E8%8A%82"><span class="nav-number">1.3.</span> <span class="nav-text">实施细节</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%F0%9F%8E%83%E6%AD%A6%E6%B1%89%E5%B8%82%E7%A7%91%E6%8A%80%E5%B1%80%E5%BA%94%E7%94%A8%E5%9F%BA%E7%A1%80%E5%89%8D%E6%B2%BF%E9%A1%B9%E7%9B%AE-%E5%9F%BA%E4%BA%8E%E5%A4%9A%E6%BA%90%E4%BF%A1%E6%81%AF%E8%9E%8D%E5%90%88%E7%9A%84%E5%9D%90%E5%8D%A7%E5%BC%8F%E6%99%BA%E8%83%BD%E5%BA%B7%E5%A4%8D%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%85%B3%E9%94%AE%E6%8A%80%E6%9C%AF%E7%A0%94%E7%A9%B6-%EF%BC%882020%E5%B9%B408%E6%9C%88-2022%E5%B9%B403%E6%9C%88%EF%BC%89"><span class="nav-number">2.</span> <span class="nav-text">🎃武汉市科技局应用基础前沿项目 - 基于多源信息融合的坐卧式智能康复机器人关键技术研究 （2020年08月-2022年03月）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A1%B9%E7%9B%AE%E6%8F%8F%E8%BF%B0-1"><span class="nav-number">2.1.</span> <span class="nav-text">项目描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A1%B9%E7%9B%AE%E7%BB%86%E8%8A%82-1"><span class="nav-number">2.2.</span> <span class="nav-text">项目细节</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9E%E6%96%BD%E7%BB%86%E8%8A%82-1"><span class="nav-number">2.3.</span> <span class="nav-text">实施细节</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9E%E9%AA%8C%E5%9C%BA%E6%99%AF%E6%90%AD%E5%BB%BA"><span class="nav-number">2.3.1.</span> <span class="nav-text">实验场景搭建</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%9A%E7%B3%BB%E7%BB%9F%E5%90%8C%E6%AD%A5%E6%8E%A7%E5%88%B6"><span class="nav-number">2.3.2.</span> <span class="nav-text">多系统同步控制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%9A%E7%B3%BB%E7%BB%9F%E6%A0%87%E5%AE%9A"><span class="nav-number">2.3.3.</span> <span class="nav-text">多系统标定</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E9%87%87%E9%9B%86"><span class="nav-number">2.3.4.</span> <span class="nav-text">数据采集</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E8%AE%BE%E8%AE%A1"><span class="nav-number">2.3.5.</span> <span class="nav-text">方法设计</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8E%E5%A4%9A%E8%A7%86%E8%A7%92%E5%87%A0%E4%BD%95%E7%9A%84%E4%B8%89%E7%BB%B4%E4%BD%8D%E5%A7%BF%E6%B1%82%E8%A7%A3"><span class="nav-number">2.3.5.1.</span> <span class="nav-text">基于多视角几何的三维位姿求解</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8E%E7%89%A9%E7%90%86%E3%80%81%E7%94%9F%E7%90%86%E7%AD%89%E7%BA%A6%E6%9D%9F%E4%BF%A1%E6%81%AF%E7%9A%84%E4%B8%89%E7%BB%B4%E4%BD%8D%E5%A7%BF%E7%B2%BE%E5%8C%96"><span class="nav-number">2.3.5.2.</span> <span class="nav-text">基于物理、生理等约束信息的三维位姿精化</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%F0%9F%8C%9F%E9%A1%B9%E7%9B%AEGithub%E5%9C%B0%E5%9D%80%F0%9F%8C%9F%EF%BC%88%E8%AE%BA%E6%96%87%E6%8E%A5%E6%94%B6%E5%90%8E%E5%BC%80%E6%BA%90%EF%BC%89"><span class="nav-number">2.4.</span> <span class="nav-text">🌟项目Github地址🌟（论文接收后开源）</span></a></li></ol></li></ol></div>
             
 
           </div>

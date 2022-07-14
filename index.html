@@ -350,7 +350,7 @@
 <li>姓名：苏磊</li>
 <li>年龄：24</li>
 <li>籍贯：安徽合肥</li>
-<li>邮箱：<a href="mailto:&#x6c;&#x65;&#105;&#x2e;&#115;&#117;&#x2e;&#119;&#111;&#x72;&#x6b;&#64;&#111;&#x75;&#116;&#108;&#x6f;&#111;&#x6b;&#46;&#x63;&#111;&#109;">&#x6c;&#x65;&#105;&#x2e;&#115;&#117;&#x2e;&#119;&#111;&#x72;&#x6b;&#64;&#111;&#x75;&#116;&#108;&#x6f;&#111;&#x6b;&#46;&#x63;&#111;&#109;</a></li>
+<li>邮箱：<a href="mailto:&#x6c;&#101;&#x69;&#x2e;&#x73;&#117;&#x2e;&#119;&#111;&#x72;&#x6b;&#64;&#x6f;&#x75;&#116;&#108;&#x6f;&#111;&#x6b;&#x2e;&#99;&#x6f;&#x6d;">&#x6c;&#101;&#x69;&#x2e;&#x73;&#117;&#x2e;&#119;&#111;&#x72;&#x6b;&#64;&#x6f;&#x75;&#116;&#108;&#x6f;&#111;&#x6b;&#x2e;&#99;&#x6f;&#x6d;</a></li>
 <li>联系电话：+86-18202751018</li>
 <li>政治面貌：预备党员</li>
 </ul>
@@ -542,7 +542,7 @@
 <li>针对现有下肢康复训练数据集稀缺的问题，搭建实验场景，构建<strong>运动捕捉系统及多相机系统</strong>，完成<strong>多系统同步控制及多系统标定</strong>的功能，并在此基础上完成<strong>数据集采集</strong>。</li>
 <li>针对人机交互、遮挡等因素影响位姿估计的问题，设计方法，基于计算机视觉，使用<strong>多视角几何</strong>，以立体图像为输入，通过<strong>添加人体内在的生理约束以及人与环境交互过程中的物理约束</strong>，有效提高了位姿估计的精度。</li>
 </ul>
-<h2 id="实施细节-1"><a href="#实施细节-1" class="headerlink" title="实施细节"></a>实施细节</h2><h3 id="技术路线"><a href="#技术路线" class="headerlink" title="技术路线"></a>技术路线</h3><h3 id="实验场景搭建"><a href="#实验场景搭建" class="headerlink" title="实验场景搭建"></a>实验场景搭建</h3><ul>
+<h2 id="实施细节-1"><a href="#实施细节-1" class="headerlink" title="实施细节"></a>实施细节</h2><h3 id="实验场景搭建"><a href="#实验场景搭建" class="headerlink" title="实验场景搭建"></a>实验场景搭建</h3><ul>
 <li>运动捕捉系统</li>
 </ul>
 <p>采用<a target="_blank" rel="noopener" href="http://www.optitrack.com.cn/">OptiTrack</a>提供的硬件及配套的软件</p>
@@ -550,10 +550,11 @@
 <li>多相机系统</li>
 </ul>
 <p>一台双目相机（后续使用了一台Kinect+两台Realsense作为多相机系统）</p>
-<img src="http://rew02gdxd.hn-bkt.clouddn.com/images/scence.png" alt="scence" style="zoom: 67%;" />
+<img src="/images/scence.png" alt="mocap" style="zoom:67%;" />
 
 <h3 id="多系统同步控制"><a href="#多系统同步控制" class="headerlink" title="多系统同步控制"></a>多系统同步控制</h3><p>基于<strong>Tkinter</strong>设计GUI用于同步控制多系统，实现逻辑基于<strong>Redis</strong>非关系型数据库。通过按钮去控制同时启动与结束不同系统的数据采集，并以时间戳的格式去存储不同系统所捕获的信息，便于后续数据的处理。</p>
-<img src="http://rew02gdxd.hn-bkt.clouddn.com/images/image-20220614162200528.png" alt="GUI" style="zoom:50%;" />
+<img src="/images/image-20220614162200528.png" alt="mocap" style="zoom: 50%;" />
+
 
 <h3 id="多系统标定"><a href="#多系统标定" class="headerlink" title="多系统标定"></a>多系统标定</h3><ul>
 <li>运动捕捉系统标定</li>
@@ -565,7 +566,9 @@
 </ul>
 <p>使用特殊的<strong>自制棋盘标定板</strong>，因为根据<strong>“张正友标定法”</strong>利用普通的棋盘标定板只能标定多相机系统中多个相机的内参及外参，并不能标定出多相机系统坐标系与运动捕捉系统坐标系之间的关系。</p>
 <p>在棋盘四个角点处贴上特制的反光标定点，使标定板能够同时被运动捕捉系统和多相机系统识别，进而编写程序通过两个系统中棋盘位置的信息来计算两个系统坐标系的转换关系。<a href="">推导多系统坐标系转换关系（待补充）</a></p>
-<img src="http://rew02gdxd.hn-bkt.clouddn.com/images/calibration.jpg" style="zoom:80%;" />
+<img src="/images/calibration.jpg" alt="mocap" style="zoom:67%;" />
+
+
 
 <h3 id="数据采集"><a href="#数据采集" class="headerlink" title="数据采集"></a>数据采集</h3><p>分为定量数据采集和定性数据采集两个部分。定量数据采集要求被试者穿上特定服装贴上反光标记点，使用运动捕捉系统捕获运动的真值。定性数据则没有要求，正常采集即可。</p>
 <h3 id="方法设计"><a href="#方法设计" class="headerlink" title="方法设计"></a>方法设计</h3><p><em>（论文尚在发表阶段，仅大致描述，后续接收后详细补充）</em></p>

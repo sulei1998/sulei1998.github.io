@@ -62,7 +62,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="," />
 
 
 
@@ -73,16 +73,17 @@
 
 
 
-<meta name="description" content="- 🥳个人简历- 😊Projects Details- 🎉Achievements">
+<meta name="description" content="Compare    SMPL SMPL-X STAR    joints 24 54 24   vertices 6890 10475 6890   body_pose 1, 69 (23, 3) 1, 63 (21, 3) 1, 72 (24, 3)   betas 1, 10 1, 10 1, 10   trans 1, 3 1, 3 1, 3   global_orientation 1,">
 <meta property="og:type" content="website">
-<meta property="og:title" content="👑Contents">
-<meta property="og:url" content="https://sulei1998.github.io/contents/index.html">
+<meta property="og:title" content="Human Model">
+<meta property="og:url" content="https://sulei1998.github.io/draft/human-model.html">
 <meta property="og:site_name" content="Lei&#39;s HomePage">
-<meta property="og:description" content="- 🥳个人简历- 😊Projects Details- 🎉Achievements">
+<meta property="og:description" content="Compare    SMPL SMPL-X STAR    joints 24 54 24   vertices 6890 10475 6890   body_pose 1, 69 (23, 3) 1, 63 (21, 3) 1, 72 (24, 3)   betas 1, 10 1, 10 1, 10   trans 1, 3 1, 3 1, 3   global_orientation 1,">
 <meta property="og:locale">
-<meta property="article:published_time" content="2022-07-13T05:22:12.000Z">
-<meta property="article:modified_time" content="2022-07-15T07:00:04.731Z">
+<meta property="article:published_time" content="2022-07-15T06:57:23.000Z">
+<meta property="article:modified_time" content="2022-07-15T07:46:12.315Z">
 <meta property="article:author" content="Lei Su">
+<meta property="article:tag" content="note">
 <meta name="twitter:card" content="summary">
 
 
@@ -113,13 +114,13 @@
 
 
 
-  <link rel="canonical" href="https://sulei1998.github.io/contents/"/>
+  <link rel="canonical" href="https://sulei1998.github.io/draft/human-model.html"/>
 
 
 
 
 
-  <title>👑Contents | Lei's HomePage</title>
+  <title>Human Model | Lei's HomePage</title>
   
 
 
@@ -249,7 +250,7 @@
     <div class="post-block page">
       <header class="post-header">
 
-	<h1 class="post-title" itemprop="name headline">👑Contents</h1>
+	<h1 class="post-title" itemprop="name headline">Human Model</h1>
 
 
 
@@ -261,7 +262,94 @@
       <div class="post-body">
         
         
-          <h1 id=""><a href="#" class="headerlink" title="- "></a>- <a href="/2022/07/11/CV/" title="🥳个人简历">🥳个人简历</a></h1><h1 id="-1"><a href="#-1" class="headerlink" title="- "></a>- <a href="/2022/07/11/projects/" title="😊Projects Details">😊Projects Details</a></h1><h1 id="-2"><a href="#-2" class="headerlink" title="- "></a>- <a href="/2022/07/14/achievements/" title="🎉Achievements">🎉Achievements</a></h1>
+          <h1 id="Compare"><a href="#Compare" class="headerlink" title="Compare"></a>Compare</h1><table>
+<thead>
+<tr>
+<th align="center"></th>
+<th align="center">SMPL</th>
+<th align="center">SMPL-X</th>
+<th align="center">STAR</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">joints</td>
+<td align="center">24</td>
+<td align="center">54</td>
+<td align="center">24</td>
+</tr>
+<tr>
+<td align="center">vertices</td>
+<td align="center">6890</td>
+<td align="center">10475</td>
+<td align="center">6890</td>
+</tr>
+<tr>
+<td align="center">body_pose</td>
+<td align="center">1, 69 (23, 3)</td>
+<td align="center">1, 63 (21, 3)</td>
+<td align="center">1, 72 (24, 3)</td>
+</tr>
+<tr>
+<td align="center">betas</td>
+<td align="center">1, 10</td>
+<td align="center">1, 10</td>
+<td align="center">1, 10</td>
+</tr>
+<tr>
+<td align="center">trans</td>
+<td align="center">1, 3</td>
+<td align="center">1, 3</td>
+<td align="center">1, 3</td>
+</tr>
+<tr>
+<td align="center">global_orientation</td>
+<td align="center">1, 3</td>
+<td align="center">1, 3</td>
+<td align="center">\</td>
+</tr>
+<tr>
+<td align="center">hand_pose</td>
+<td align="center">\</td>
+<td align="center">1, 45</td>
+<td align="center">\</td>
+</tr>
+<tr>
+<td align="center">eye_pose</td>
+<td align="center">\</td>
+<td align="center">1, 10</td>
+<td align="center">\</td>
+</tr>
+</tbody></table>
+<h2 id="SMPL"><a href="#SMPL" class="headerlink" title="SMPL"></a>SMPL</h2><p>Blend Skining的步骤:</p>
+<ol>
+<li>shape blend shapes基于形状的混合成型</li>
+</ol>
+<p>目的:考虑形状参数 $\beta$ 对基蒙版的影响<br>$$<br>B_{S}(\vec{\beta} ; \mathcal{S})&#x3D;\sum_{n&#x3D;1}^{|\vec{\beta}|} \beta_{n} \mathbf{S}_{n}<br>$$</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1. Add shape contribution</span></span><br><span class="line">v_shaped = v_template + blend_shapes(betas, shapedirs)</span><br></pre></td></tr></table></figure>
+
+<p>$$<br>J(\vec{\beta} ; \mathcal{J}, \overline{\mathbf{T}}, \mathcal{S})&#x3D;\mathcal{J}\left(\overline{\mathbf{T}}+B_{P}(\vec{\beta} ; \mathcal{S})\right)<br>$$</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 2Get the joints</span></span><br><span class="line"><span class="comment"># NxJx3 array</span></span><br><span class="line">J = vertices2joints(J_regressor, v_shaped)</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>pose blend shapes基于姿势的混合成型</li>
+</ol>
+<p>目的:考虑姿势参数 $\theta$ 对基蒙版的影响</p>
+<p>影响的参数量：23<em>9 &#x3D; 207个<br>$$<br>B_{P}(\vec{\theta} ; \mathcal{P})&#x3D;\sum_{n&#x3D;1}^{9 K}\left(R_{n}(\vec{\theta})-R_{n}\left(\overrightarrow{\theta^{</em>}}\right)\right) \mathbf{P}_{n}<br>$$</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 3. Add pose blend shapes</span></span><br><span class="line"><span class="comment"># N x J x 3 x 3</span></span><br><span class="line">ident = torch.eye(<span class="number">3</span>, dtype=dtype, device=device)</span><br><span class="line"><span class="keyword">if</span> pose2rot:</span><br><span class="line">    rot_mats = batch_rodrigues(pose.view(-<span class="number">1</span>, <span class="number">3</span>)).view(</span><br><span class="line">        [batch_size, -<span class="number">1</span>, <span class="number">3</span>, <span class="number">3</span>])</span><br><span class="line"></span><br><span class="line">    pose_feature = (rot_mats[:, <span class="number">1</span>:, :, :] - ident).view([batch_size, -<span class="number">1</span>])</span><br><span class="line">    <span class="comment"># (N x P) x (P, V * 3) -&gt; N x V x 3</span></span><br><span class="line">    pose_offsets = torch.matmul(</span><br><span class="line">        pose_feature, posedirs).view(batch_size, -<span class="number">1</span>, <span class="number">3</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        pose_feature = pose[:, <span class="number">1</span>:].view(batch_size, -<span class="number">1</span>, <span class="number">3</span>, <span class="number">3</span>) - ident</span><br><span class="line">        rot_mats = pose.view(batch_size, -<span class="number">1</span>, <span class="number">3</span>, <span class="number">3</span>)</span><br><span class="line"></span><br><span class="line">        pose_offsets = torch.matmul(pose_feature.view(batch_size, -<span class="number">1</span>),</span><br><span class="line">                                    posedirs).view(batch_size, -<span class="number">1</span>, <span class="number">3</span>)</span><br><span class="line"></span><br><span class="line">v_posed = pose_offsets + v_shaped</span><br></pre></td></tr></table></figure>
+
+
+
+<ol start="3">
+<li>skining</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 4. Get the global joint location</span></span><br><span class="line">J_transformed, A = batch_rigid_transform(rot_mats, J, parents, dtype=dtype)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 5. Do skinning:</span></span><br><span class="line"><span class="comment"># W is N x V x (J + 1)</span></span><br><span class="line">W = lbs_weights.unsqueeze(dim=<span class="number">0</span>).expand([batch_size, -<span class="number">1</span>, -<span class="number">1</span>])</span><br><span class="line"><span class="comment"># (N x V x (J + 1)) x (N x (J + 1) x 16)</span></span><br><span class="line">num_joints = J_regressor.shape[<span class="number">0</span>]</span><br><span class="line">T = torch.matmul(W, A.view(batch_size, num_joints, <span class="number">16</span>)) \</span><br><span class="line">.view(batch_size, -<span class="number">1</span>, <span class="number">4</span>, <span class="number">4</span>)</span><br><span class="line"></span><br><span class="line">homogen_coord = torch.ones([batch_size, v_posed.shape[<span class="number">1</span>], <span class="number">1</span>],</span><br><span class="line">                           dtype=dtype, device=device)</span><br><span class="line">v_posed_homo = torch.cat([v_posed, homogen_coord], dim=<span class="number">2</span>)</span><br><span class="line">v_homo = torch.matmul(T, torch.unsqueeze(v_posed_homo, dim=-<span class="number">1</span>))</span><br><span class="line"></span><br><span class="line">verts = v_homo[:, :, :<span class="number">3</span>, <span class="number">0</span>]</span><br></pre></td></tr></table></figure>
+
+
+
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/158700893">人体动作捕捉与SMPL模型 (mocap and SMPL model) - 知乎 (zhihu.com)</a></p>
+
         
       </div>
       
@@ -409,7 +497,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">- 🥳个人简历</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#-1"><span class="nav-number">2.</span> <span class="nav-text">- 😊Projects Details</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#-2"><span class="nav-number">3.</span> <span class="nav-text">- 🎉Achievements</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Compare"><span class="nav-number">1.</span> <span class="nav-text">Compare</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#SMPL"><span class="nav-number">1.1.</span> <span class="nav-text">SMPL</span></a></li></ol></li></ol></div>
             
 
           </div>
